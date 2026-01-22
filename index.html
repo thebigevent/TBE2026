@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://use.typekit.net/ews4apc.css">
+    <link rel="icon" href="favicon.ico">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-BlueMedium': '#488CC0',
+                        'brand-BlueLight': '#A1C5DD', 
+                        'brand-Green': '#86BE42',
+                    },
+                    fontFamily: {
+                        'gothic': ['"century-gothic"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        
+
+        body {
+            font-family: "century-gothic", sans-serif;
+        font-weight: 400;
+            font-style: normal;
+            margin-left: 10%;
+            margin-right: 10%;
+            border-block-color: pink;
+            font-size: 25px;
+            background-repeat: repeat;
+            position: relative;
+            min-height: 100vh;
+        }
+       
+        @media (min-width: 768px) {
+            body {
+                background-attachment: fixed;
+            }
+        }
+
+        body::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="font-gothic text-gray-800 min-h-screen flex flex-col">
+
+
+    <div class="fixed top-0 left-0 w-full h-full bg-white/80 -z-10 pointer-events-none"></div>
+    <nav class="bg-brand-Green p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-3xl font-bold tracking-wider">
+                <span class="mr-2"></span>Big Event Logo
+            </a>
+
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <div class="hidden md:flex space-x-8 text-white text-xl">
+                <a href="#about" class="hover:text-yellow-200 transition">Page1</a>
+                <a href="#menu" class="hover:text-yellow-200 transition">Page2</a>
+                <a href="#contact" class="hover:text-yellow-200 transition">Page3</a>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden mt-4 text-center bg-brand-dark rounded-lg p-4 text-white">
+            <a href="#about" class="block py-2 hover:bg-brand-BlueMedium rounded">Page1</a>
+            <a href="#menu" class="block py-2 hover:bg-brand-BlueMedium rounded">Page2</a>
+            <a href="#contact" class="block py-2 hover:bg-brand-BlueMedium rounded">Page3</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow container mx-auto px-6 py-12">
+
+        <div id="about" class="text-center mb-16">
+            <h1 class="text-5xl text-brand-BlueLight mb-6">Service Hour Assignment</h1>
+            <p class="text-2xl leading-relaxed max-w-2xl mx-auto">
+            Put in your first name, last name, and email to reveal your Big Event Day assignment!
+            </p>
+        </div>
+
+       
+    </main>
+    <!-- Contact Section -->
+    <!-- Footer -->
+    <footer class="bg-brand-BlueMedium text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2026 Big Event. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+    </script>
+</body> 
+</html>
