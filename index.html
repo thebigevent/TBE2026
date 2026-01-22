@@ -69,10 +69,10 @@
 
 
     <div class="fixed top-0 left-0 w-full h-full bg-white/80 -z-10 pointer-events-none"></div>
-    <nav class="bg-brand-Green p-4 shadow-lg sticky top-0 z-50">
+    <nav class="bg-brand-Green p-1 shadow-lg sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-white text-3xl font-bold tracking-wider">
-                <span class="mr-2"></span>Big Event Logo
+                <span class="mr-0"> </span> <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-20 w-20">
             </a>
 
             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
@@ -80,16 +80,16 @@
             </button>
 
             <div class="hidden md:flex space-x-8 text-white text-xl">
-                <a href="#about" class="hover:text-yellow-200 transition">Page1</a>
-                <a href="#menu" class="hover:text-yellow-200 transition">Page2</a>
-                <a href="#contact" class="hover:text-yellow-200 transition">Page3</a>
+                <a href="#about" class="hover:bg-brand-BlueMedium transition">Page 1</a>
+                <a href="#menu" class="hover:bg-brand-BlueMedium transition">Page 2</a>
+                <a href="#contact" class="hover:bg-brand-BlueMedium transition">Page 3</a>
             </div>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden mt-4 text-center bg-brand-dark rounded-lg p-4 text-white">
-            <a href="#about" class="block py-2 hover:bg-brand-BlueMedium rounded">Page1</a>
-            <a href="#menu" class="block py-2 hover:bg-brand-BlueMedium rounded">Page2</a>
-            <a href="#contact" class="block py-2 hover:bg-brand-BlueMedium rounded">Page3</a>
+            <a href="#about" class="block py-2 hover:bg-brand-BlueMedium rounded">Page 1</a>
+            <a href="#menu" class="block py-2 hover:bg-brand-BlueMedium rounded">Page 2</a>
+            <a href="#contact" class="block py-2 hover:bg-brand-BlueMedium rounded">Page 3</a>
         </div>
     </nav>
 
@@ -101,13 +101,25 @@
             Put in your first name, last name, and email to reveal your Big Event Day assignment!
             </p>
         </div>
+        
+          <form action="/submit_form" method="POST">
+        <label for="FirstName">First Name:</label>
+        <input type="text" id="FirstName" name="FirstName" placeholder="John"> </br>
+        <label for="LastName">Last Name:</label>
+        <input type="text" id="LastName" name="LastName" placeholder="Doe"></br>
+         <label for="Email">Email:</label>
+        <input type="text" id="Email" name="Email" placeholder="JohnDoe@gmail.com"></br>
+        <input type="submit" value="Submit">
+        </form>
+
+            
 
        
     </main>
     <!-- Contact Section -->
     <!-- Footer -->
-    <footer class="bg-brand-BlueMedium text-white py-6">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="bg-brand-Green text-white py-2">
+        <div class="container mx-auto px-4 text-center">
             <p>&copy; 2026 Big Event. All Rights Reserved.</p>
         </div>
     </footer>
