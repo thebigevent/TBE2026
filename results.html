@@ -1,194 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Event</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/ews4apc.css">
-    <link rel="icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big Event | Results</title>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-BlueMedium': '#488CC0',
-                        'brand-BlueLight': '#A1C5DD', 
-                        'brand-Green': '#86BE42',
-                    },
-                    fontFamily: {
-                        'gothic': ['"century-gothic"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/ews4apc.css" />
+  <link rel="icon" href="favicon.ico" />
 
-    <style>
-        
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "brand-BlueMedium": "#488CC0",
+            "brand-BlueLight": "#A1C5DD",
+            "brand-Green": "#86BE42",
+          },
+          fontFamily: {
+            gothic: ['"century-gothic"', "sans-serif"],
+            chunk: ['"chunk-five"', "serif"],
+          },
+        },
+      },
+    };
+  </script>
 
-        body {
-            font-family: "century-gothic", sans-serif;
-        font-weight: 400;
-            font-style: normal;
-            font-size: 25px;
-            background-repeat: repeat;
-            position: relative;
-            min-height: 100vh;
-        }
-       
-        @media (min-width: 768px) {
-            body {
-                background-attachment: fixed;
-            }
-        }
-
-        body::before {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            pointer-events: none;
-            z-index: -1;
-        }
-        @media print {
-            .no-print { display: none; }
-            nav { display: none; }
-            footer { display: none; }
-            body { background: white; }
-            body::before { display: none; }
-            .print-border { border: 2px solid #000; }
-        }
-
-        main {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+  <style>
+    body {
+      font-family: "century-gothic", sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(161,197,221,.55), transparent 35%),
+        radial-gradient(circle at 85% 0%, rgba(134,190,66,.18), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(72,140,192,.18), transparent 40%),
+        radial-gradient(rgba(72,140,192,.08) 1px, transparent 1px);
+      background-size: auto, auto, auto, 18px 18px;
+      background-color: #fff;
+    }
+  </style>
 </head>
-<body class="font-gothic text-gray-800 min-h-screen flex flex-col">
 
+<body class="text-gray-800 flex flex-col min-h-screen">
 
-    <div class="fixed top-0 left-0 w-full h-full bg-white/80 -z-10 pointer-events-none"></div>
-    <nav class="bg-brand-Green p-1 shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-3xl font-bold tracking-wider">
-                <span class="mr-0"> </span> <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-20 w-20">
-            </a>
+<nav class="bg-brand-Green/95 backdrop-blur p-2 shadow-lg sticky top-0 z-50 border-b border-white/30">
+  <div class="container mx-auto flex justify-between items-center px-2">
+    <a href="index.html" class="flex items-center gap-3 text-white">
+      <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-16 w-16" />
+      <span class="hidden sm:inline text-2xl font-bold">Big Event</span>
+    </a>
+  </div>
+</nav>
 
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
+<main class="flex-grow container mx-auto px-6 py-12">
 
-            <div class="hidden md:flex space-x-8 text-white text-xl">
-                <a href="index.html" class="hover:bg-brand-BlueMedium transition">Login</a>
-                <a href="history.html" class="hover:bg-brand-BlueMedium transition">History</a>
-                <a href="org.html" class="hover:bg-brand-BlueMedium transition">Organizations</a>
-            </div>
-        </div>
+  <section class="text-center mb-10">
+    <h1 class="text-5xl font-chunk text-brand-BlueMedium">
+      Assignment Found!
+    </h1>
+    <p class="mt-4 text-gray-600">
+      Here are your Big Event service details.
+    </p>
+  </section>
 
-        <div id="mobile-menu" class="hidden md:hidden mt-4 text-center bg-brand-dark rounded-lg p-4 text-white">
-            <a href="index.html" class="block py-2 hover:bg-brand-BlueMedium rounded">Login</a>
-            <a href="history.html" class="block py-2 hover:bg-brand-BlueMedium rounded">History</a>
-            <a href="org.html" class="block py-2 hover:bg-brand-BlueMedium rounded">Organizations</a>
-        </div>
-    </nav>
+  <div class="relative max-w-3xl mx-auto">
+    <div class="absolute -top-12 -left-12 w-64 h-64 bg-brand-BlueLight/50 blur-2xl rounded-full"></div>
+    <div class="absolute top-24 -right-16 w-72 h-72 bg-brand-Green/20 blur-2xl rounded-full"></div>
 
-    <main class="flex-grow container mx-auto px-6 py-12">
+    <div class="relative bg-white/85 backdrop-blur rounded-3xl shadow-xl border border-brand-BlueLight/60 p-8">
+      <p class="text-lg font-bold">Volunteer: John Doe</p>
+      <p class="mt-2">Organization: Volunteer Organization</p>
+      <p class="mt-2">Task: Assigned Task</p>
+      <p class="mt-2">Time: Shift Time</p>
+    </div>
+  </div>
 
-   <div class="text-center mb-10 no-print">
-            <h1 class="text-4xl text-brand-BlueMedium font-bold mb-4">Assignment Found!</h1>
-            <p class="text-xl text-gray-600">Here are the details for your upcoming service day.</p>
-        </div>
+</main>
 
-        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden print-border mb-8">
-            
-            <div class="bg-brand-Green p-6 text-white flex justify-between items-center">
-                <div>
-                    <h2 class="text-2xl font-bold">Volunteer Assignment</h2>
-                    <p class="text-brand-BlueMedium ">Big Event 2026</p>
-                </div>
-                <div class="bg-white/20 p-2 rounded-full">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-            </div>
+<footer class="bg-brand-Green text-white py-3 text-center border-t border-white/30">
+  <p>&copy; 2026 Big Event</p>
+</footer>
 
-            <div class="p-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
-                    <div class="md:col-span-1 text-gray-500 font-bold uppercase text-sm tracking-wide">Volunteer</div>
-                    <div class="md:col-span-2 text-xl font-bold text-gray-800 border-b pb-2">John Doe</div>
-
-                    <div class="md:col-span-1 text-gray-500 font-bold uppercase text-sm tracking-wide">Organization</div>
-                    <div class="md:col-span-2 text-lg text-gray-800 border-b pb-2">
-                        <span class="text-brand-BlueMedium font-bold">Volunteer Organization</span>
-                    </div>
-
-                    <div class="md:col-span-1 text-gray-500 font-bold uppercase text-sm tracking-wide">Task</div>
-                    <div class="md:col-span-2 text-gray-800 border-b pb-2">
-                        Task (if it is known)
-                    </div>
-
-                    <div class="md:col-span-1 text-gray-500 font-bold uppercase text-sm tracking-wide">Location</div>
-                    <div class="md:col-span-2 text-gray-800 border-b pb-2">
-                    address
-                        <br>
-                        <a href="#" class="text-brand-BlueMedium text-sm underline hover:text-brand-Green mt-1 inline-block no-print">View on Google Maps</a>
-                    </div>
-
-                    <div class="md:col-span-1 text-gray-500 font-bold uppercase text-sm tracking-wide">Shift Time</div>
-                    <div class="md:col-span-2 text-lg font-bold text-gray-800">
-                        Time Slot
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gray-50 p-4 text-center text-sm text-gray-500 border-t">
-                Please arrive 15 minutes early for check-in. Contact Bigevent.delegatecoordinator@gmail.com if you cannot make it.
-            </div>
-        </div>
-
-        <div class="text-center space-x-4 no-print">
-            <button onclick="window.print()" class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-BlueMedium transition">
-                <svg class="w-5 h-5 mr-2 -ml-1 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                Print Assignment
-            </button>
-            <a href="index.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-BlueMedium bg-blue-50 hover:bg-blue-100 transition">
-                Check Another
-            </a>
-        </div>
-            
-
-       
-    </main>
-    <!-- Contact Section -->
-    <!-- Footer -->
-    <footer class="bg-brand-Green text-white py-2">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2026 Big Event. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Simple script for mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-    </script>
-</body> 
+</body>
 </html>

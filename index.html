@@ -1,163 +1,203 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Event</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://use.typekit.net/ews4apc.css">
-    <link rel="icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big Event</title>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-BlueMedium': '#488CC0',
-                        'brand-BlueLight': '#A1C5DD', 
-                        'brand-Green': '#86BE42',
-                    },
-                    fontFamily: {
-                        'gothic': ['"century-gothic"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ews4apc.css" />
+  <link rel="icon" href="favicon.ico" />
 
-        body {
-            font-family: "century-gothic", sans-serif;
-        font-weight: 400;
-            font-style: normal;
-            font-size: 25px;
-            background-repeat: repeat;
-            position: relative;
-            min-height: 100vh;
-        }
-       
-        @media (min-width: 768px) {
-            body {
-                background-attachment: fixed;
-            }
-        }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "brand-BlueMedium": "#488CC0",
+            "brand-BlueLight": "#A1C5DD",
+            "brand-Green": "#86BE42",
+          },
+          fontFamily: {
+            gothic: ['"century-gothic"', "sans-serif"],
+            
+            chunk: ['"chunk-five"', '"ChunkFive"', "serif"],
+          },
+        },
+      },
+    };
+  </script>
 
-        body::before {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            pointer-events: none;
-            z-index: -1;
-        }
+  <style>
+    body {
+      font-family: "century-gothic", sans-serif;
+      font-weight: 400;
+      font-style: normal;
 
-        main {
-            position: relative;
-            z-index: 1;
-        }
-    </style>
+      min-height: 100vh;
+
+      background:
+        radial-gradient(circle at 20% 10%, rgba(161, 197, 221, 0.55), transparent 35%),
+        radial-gradient(circle at 85% 0%, rgba(134, 190, 66, 0.18), transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(72, 140, 192, 0.18), transparent 40%),
+        radial-gradient(rgba(72, 140, 192, 0.08) 1px, transparent 1px);
+      background-size: auto, auto, auto, 18px 18px;
+      background-color: #ffffff;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        background-attachment: fixed;
+      }
+    }
+  </style>
 </head>
+
 <body class="font-gothic text-gray-800 min-h-screen flex flex-col">
 
+  <!-- NAV -->
+  <nav class="bg-brand-Green/95 backdrop-blur p-2 shadow-lg sticky top-0 z-50 border-b border-white/30">
+    <div class="container mx-auto flex justify-between items-center px-2">
+      <a href="index.html" class="flex items-center gap-3 text-white">
+        <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-16 w-16" alt="Big Event Logo" />
+        <span class="hidden sm:inline text-2xl font-bold tracking-wide">Big Event</span>
+      </a>
 
-    <div class="fixed top-0 left-0 w-full h-full bg-white/80 -z-10 pointer-events-none"></div>
-    <nav class="bg-brand-Green p-1 shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-3xl font-bold tracking-wider">
-                <span class="mr-0"> </span> <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-20 w-20">
-            </a>
+      <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
+        <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
 
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
+      <div class="hidden md:flex items-center gap-3 text-white text-lg">
+        <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Login</a>
+        <a href="history.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">History</a>
+        <a href="org.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Organizations</a>
+      </div>
+    </div>
 
-            <div class="hidden md:flex space-x-8 text-white text-xl">
-                <a href="index.html" class="hover:bg-brand-BlueMedium transition">Login</a>
-                <a href="history.html" class="hover:bg-brand-BlueMedium transition">History</a>
-                <a href="org.html" class="hover:bg-brand-BlueMedium transition">Organizations</a>
-            </div>
+    <div id="mobile-menu" class="hidden md:hidden mt-3 text-center rounded-2xl p-3 mx-2 bg-white/85 backdrop-blur border border-brand-BlueLight/60">
+      <a href="index.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">Login</a>
+      <a href="history.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">History</a>
+      <a href="org.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">Organizations</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="flex-grow container mx-auto px-6 py-12">
+    <!-- Header -->
+    <section class="text-center mb-10">
+      <h1 class="text-5xl md:text-6xl font-chunk tracking-wide text-brand-BlueMedium">
+        Service Hour Assignment
+      </h1>
+      <p class="mt-4 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        Enter your name and email to reveal your Big Event Day assignment.
+      </p>
+    </section>
+
+    <!-- Decorative blobs (behind card) -->
+    <div class="relative max-w-lg mx-auto">
+      <div aria-hidden="true" class="absolute -top-10 -left-12 w-56 h-56 rounded-full bg-brand-BlueLight/55 blur-2xl"></div>
+      <div aria-hidden="true" class="absolute top-14 -right-14 w-64 h-64 rounded-full bg-brand-Green/20 blur-2xl"></div>
+
+      <!-- Card -->
+      <div class="relative bg-white/85 backdrop-blur p-10 rounded-3xl shadow-xl border border-brand-BlueLight/60">
+        <!--badge-->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-BlueLight/40 text-brand-BlueMedium font-semibold text-sm mb-7">
+          <span class="w-2 h-2 rounded-full bg-brand-Green"></span>
+          Find your assignment
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden mt-4 text-center bg-brand-dark rounded-lg p-4 text-white">
-            <a href="index.html" class="block py-2 hover:bg-brand-BlueMedium rounded">Login</a>
-            <a href="history.html" class="block py-2 hover:bg-brand-BlueMedium rounded">History</a>
-            <a href="org.html" class="block py-2 hover:bg-brand-BlueMedium rounded">Organizations</a>
-        </div>
-    </nav>
+        <!-- FIXED: Form now wraps the inputs + button -->
+        <form action="results.html" method="GET" class="flex flex-col space-y-5">
+          <div>
+            <label for="FirstName" class="block text-sm font-bold text-gray-700 mb-1">First Name</label>
+            <input
+              type="text"
+              id="FirstName"
+              name="FirstName"
+              placeholder="John"
+              class="w-full px-5 py-3 border border-brand-BlueLight/70 rounded-2xl bg-white/80
+                     placeholder:text-gray-400
+                     focus:outline-none focus:ring-4 focus:ring-brand-BlueLight/50 focus:border-brand-BlueMedium
+                     hover:border-brand-BlueMedium/60 transition"
+              required
+            />
+          </div>
 
-    <main class="flex-grow container mx-auto px-6 py-12">
-
-        <div id="about" class="text-center mb-16">
-            <h1 class="text-5xl text-brand-BlueMedium mb-6">Service Hour Assignment</h1>
-            <p class="text-2xl leading-relaxed max-w-2xl mx-auto">
-            Put in your first name, last name, and email to reveal your Big Event Day assignment!
-            </p>
-        </div>
-        <!--this is the input section-->
-        <div class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-2xl border-t-4 border-brand-BlueLight">
-        <!--temp form tag to carry it straight to success page-->
-            <form action="results.html" method="GET" class="flex flex-col space-y-5"></form>
-           <!--<form action="/submit_form" method="POST" class="flex flex-col space-y-5">--> 
-        
-        <div>
-            <label for="FirstName" class="block text-sm font-bold text-grey-700 mb-1">First Name</label>
-            <input type="text" id="FirstName" name="FirstName" placeholder="John" 
-                class="w-full px-4 py-2 border border-brand-BlueLight rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-BlueMedium focus:border-transparent transition duration-200">
-        </div>
-
-        <div>
+          <div>
             <label for="LastName" class="block text-sm font-bold text-gray-700 mb-1">Last Name</label>
-            <input type="text" id="LastName" name="LastName" placeholder="Doe" 
-                class="w-full px-4 py-2 border border-brand-BlueLight rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-BlueMedium focus:border-transparent transition duration-200">
-        </div>
+            <input
+              type="text"
+              id="LastName"
+              name="LastName"
+              placeholder="Doe"
+              class="w-full px-5 py-3 border border-brand-BlueLight/70 rounded-2xl bg-white/80
+                     placeholder:text-gray-400
+                     focus:outline-none focus:ring-4 focus:ring-brand-BlueLight/50 focus:border-brand-BlueMedium
+                     hover:border-brand-BlueMedium/60 transition"
+              required
+            />
+          </div>
 
-        <div>
+          <div>
             <label for="Email" class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
-            <input type="email" id="Email" name="Email" placeholder="JohnDoe@gmail.com" 
-                class="w-full px-4 py-2 border border-brand-BlueLight rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-BlueMedium focus:border-transparent transition duration-200">
-        </div>
-    </br>
-        <button type="submit" 
-            class="w-full bg-brand-BlueMedium text-white font-bold text-lg py-3 rounded-lg shadow-md hover:bg-opacity-90 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
+            <input
+              type="email"
+              id="Email"
+              name="Email"
+              placeholder="john.doe@gmail.com"
+              class="w-full px-5 py-3 border border-brand-BlueLight/70 rounded-2xl bg-white/80
+                     placeholder:text-gray-400
+                     focus:outline-none focus:ring-4 focus:ring-brand-BlueLight/50 focus:border-brand-BlueMedium
+                     hover:border-brand-BlueMedium/60 transition"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full rounded-2xl py-4 font-bold text-lg text-white shadow-lg
+                   bg-gradient-to-r from-brand-BlueMedium to-brand-Green
+                   hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition"
+          >
             Find My Assignment
-        </button>
+          </button>
 
-    </form>
-</div>
+          <p class="text-sm text-gray-500 text-center pt-2">
+            Use the same name/email you registered with.
+          </p>
+        </form>
+      </div>
+    </div>
+  </main>
 
-            
+  <!-- FOOTER -->
+  <footer class="bg-brand-Green text-white py-3 border-t border-white/30">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2026 Big Event</p>
+    </div>
+  </footer>
 
-       
-    </main>
-    <!-- Contact Section -->
-    <!-- Footer -->
-    <footer class="bg-brand-Green text-white py-2">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2026 Big Event. All Rights Reserved.</p>
-        </div>
-    </footer>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-    <script>
-        // Simple script for mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-    </script>
-</body> 
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll("#mobile-menu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    });
+  </script>
+</body>
 </html>
