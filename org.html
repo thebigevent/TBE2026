@@ -126,7 +126,7 @@
     function card(site) {
       const name = escapeHtml(site.name);
       const address = escapeHtml(site.address || "");
-      const notes = escapeHtml(site.notes || "");
+      const description = escapeHtml(site.publicDescription || "");
       const volunteers = escapeHtml(site.volunteers || "");
       const tasks = splitTasks(site.tasks);
 
@@ -146,7 +146,7 @@
 
           <div class="mt-4 text-sm text-gray-700 space-y-1">
             ${volunteers ? `<p><span class="font-semibold">Volunteers:</span> ${volunteers}</p>` : ""}
-            ${notes ? `<p class="text-gray-600"><span class="font-semibold text-gray-700">Notes:</span> ${notes}</p>` : ""}
+            ${description ? `<p class="text-gray-600"><span class="font-semibold text-gray-700">About:</span> ${description}</p>` : ""}
           </div>
         </article>
       `;
@@ -162,7 +162,7 @@
       if (!q) return render(allSites);
 
       const filtered = allSites.filter(s => {
-        const hay = [s.name, s.address, s.tasks, s.notes].join(" ").toLowerCase();
+        const hay = [s.name, s.address, s.tasks, s.publicDescription].join(" ").toLowerCase();
         return hay.includes(q);
       });
 
@@ -172,7 +172,7 @@
     async function init() {
       try {
         const res = await fetch("sites.json", { cache: "no-store" });
-        if (!res.ok) throw new Error(`Could not load sites.json (${res.status})`);
+        if (!res.ok) throw new Error(`Could not load)`);
 
         allSites = await res.json();
 

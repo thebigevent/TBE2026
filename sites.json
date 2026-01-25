@@ -1,13 +1,16 @@
+
 [
   {
     "name": "Our Blessings Early Learning Center Too",
     "address": "2007 Apalachee Parkway Tallahassee, FL 32301",
-    "tasks": "Gardening/Landscaping,Indoor/Outdoor Painting,Archival/Office Work",
+    "tasks": "Gardening/Landscaping, Indoor/Outdoor Painting, Archival/Office Work",
     "volunteers": 4,
     "notes": "Some students will be inside and some outside.",
     "contactName": "Tomica King Jackson",
     "email": "info@ourblessingselc.org",
-    "phone": "850-524-3257"
+    "phone": "850-524-3257",
+    "siteId": "001-our-blessings-early-learning-center-too",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Allegro Senior Living",
@@ -17,7 +20,9 @@
     "notes": "Possibility of contact with leashed animals.",
     "contactName": "Rebecca Gardner",
     "email": "rgardner@allegroliving.com",
-    "phone": 8025780385
+    "phone": 8025780385,
+    "siteId": "002-allegro-senior-living",
+    "publicDescription": "An organization supporting older adults through services, care, and community programs."
   },
   {
     "name": "HOPE Community",
@@ -27,7 +32,9 @@
     "notes": "",
     "contactName": "Tim Griffith",
     "email": "tgriffith@familypromisebigbend.org",
-    "phone": "907-331-9619"
+    "phone": "907-331-9619",
+    "siteId": "003-hope-community",
+    "publicDescription": "A local faith and community organization participating in service and outreach."
   },
   {
     "name": "Geller Residence",
@@ -37,17 +44,21 @@
     "notes": "",
     "contactName": "Leslie Geller",
     "email": "leslieageller@gmail.com",
-    "phone": 5125770223
+    "phone": 5125770223,
+    "siteId": "004-geller-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
-    "name": "Leon County Sheriff’s Office",
+    "name": "Leon County Sheriff\u2019s Office",
     "address": "2825 Municipal Way, Tallahassee, FL 32304",
     "tasks": "Trash Cleanup",
     "volunteers": 10,
     "notes": "",
     "contactName": "Erin Tupper",
     "email": "Tuppere@leoncountyfl.gov",
-    "phone": 8505917017
+    "phone": 8505917017,
+    "siteId": "005-leon-county-sheriff-s-office",
+    "publicDescription": "Primary law enforcement agency for Leon County, Florida, focusing on public safety, community engagement, and crime prevention"
   },
   {
     "name": "Crawford Residence",
@@ -57,7 +68,9 @@
     "notes": "",
     "contactName": "Harriet Crawford",
     "email": "hcrawford@fsu.edu",
-    "phone": "850 590 3206"
+    "phone": "850 590 3206",
+    "siteId": "006-crawford-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Making Miracles Haven",
@@ -67,7 +80,9 @@
     "notes": "Limited parking - requesting volunteers carpool. Would like to be matched with the Caribbean Students Group from last year.",
     "contactName": "Wendy Wheeless",
     "email": "wndymthwswhlss@gmail.com",
-    "phone": "850-508-9890"
+    "phone": "850-508-9890",
+    "siteId": "007-making-miracles-haven",
+    "publicDescription": "Making Miracles Haven is a non-profit organization that provides housing and support for young mothers and expectant mothers."
   },
   {
     "name": "The Learning Pavilion",
@@ -77,7 +92,9 @@
     "notes": "",
     "contactName": "Tania Himes",
     "email": "thimes@thelearningpavilion.org",
-    "phone": 8509215437
+    "phone": 8509215437,
+    "siteId": "008-the-learning-pavilion",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Hatton Residence",
@@ -87,7 +104,9 @@
     "notes": "Heavy lifting required. Noted volunteers may come in contact with animals. Also requested attic swept and porch washed.",
     "contactName": "Michele hatton",
     "email": "shellyhatton@gmail.com",
-    "phone": 8506613803
+    "phone": 8506613803,
+    "siteId": "009-hatton-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Motivating People through Arts and Crafts",
@@ -97,7 +116,9 @@
     "notes": "",
     "contactName": "Betty Proctor",
     "email": "mpac681@gmail.com",
-    "phone": 8509804075
+    "phone": 8509804075,
+    "siteId": "010-motivating-people-through-arts-and-craft",
+    "publicDescription": "Focuses on enhancing social connections and career aspirations through a variety of art workshops and career development programs."
   },
   {
     "name": "Bond Elementary School",
@@ -107,7 +128,9 @@
     "notes": "",
     "contactName": "Delshuana Jackson",
     "email": "delshuana.jackson@leonschools.net",
-    "phone": "850-510-7547"
+    "phone": "850-510-7547",
+    "siteId": "011-bond-elementary-school",
+    "publicDescription": "An elementary school serving local students through education and community engagement."
   },
   {
     "name": "Nims Middle School",
@@ -117,7 +140,9 @@
     "notes": "Outside in the dirt and elements. Requests students with a garden and biology interest.",
     "contactName": "Jeremy Bunk",
     "email": "bunkj@leonschools.net",
-    "phone": "941-276-6353"
+    "phone": "941-276-6353",
+    "siteId": "012-nims-middle-school",
+    "publicDescription": "A middle school supporting student learning and academic development."
   },
   {
     "name": "Goodwood Museum and Gardens",
@@ -127,7 +152,9 @@
     "notes": "Requested students come dressed in pants with closed-toed shoes.",
     "contactName": "Stephany Cecil",
     "email": "operations@goodwoodmuseum.org",
-    "phone": "8507781265"
+    "phone": "8507781265",
+    "siteId": "013-goodwood-museum-and-gardens",
+    "publicDescription": "A cultural organization preserving and sharing local history, art, and community programs."
   },
   {
     "name": "Gretchen Everhart School",
@@ -137,7 +164,9 @@
     "notes": "Need to cancel. Jane is recovering from surgery and won't be able to get someone to facilitate the event",
     "contactName": "Jane Floyd Bullen",
     "email": "floydj@leonschools.net",
-    "phone": "950-508-8729"
+    "phone": "950-508-8729",
+    "siteId": "014-gretchen-everhart-school",
+    "publicDescription": "A school participating as a community partner for The Big Event."
   },
   {
     "name": "Good News Outreach",
@@ -147,7 +176,9 @@
     "notes": "",
     "contactName": "Whitney Moore",
     "email": "Whitneym@goodnewsoutreach.org",
-    "phone": "707-303-0999"
+    "phone": "707-303-0999",
+    "siteId": "015-good-news-outreach",
+    "publicDescription": "Good News Outreach food program includes a food delivery service for seniors and a pantry for others experiencing food insecurity."
   },
   {
     "name": "Pineview Elementary School",
@@ -157,7 +188,9 @@
     "notes": "Students should be prepared for winter weather and getting dirty.",
     "contactName": "Carmen Conner",
     "email": "connerc@leonschools.net",
-    "phone": "8504882819"
+    "phone": "8504882819",
+    "siteId": "016-pineview-elementary-school",
+    "publicDescription": "An elementary school serving local students through education and community engagement."
   },
   {
     "name": "McKenzie Residence",
@@ -167,7 +200,9 @@
     "notes": "",
     "contactName": "Teresa L. McKenzie",
     "email": "LaverneMcKenzie.TLM@gmail.com",
-    "phone": "850/408-3466"
+    "phone": "850/408-3466",
+    "siteId": "017-mckenzie-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "FAMU Community Garden",
@@ -177,7 +212,9 @@
     "notes": "Come prepared to participate in one of the activities. Bring gloves, hat, water, snack, technology tool with internet access.\nPlease have students complete volunteer hour forms before coming to the site or provide a link for them to complete. \nHours will vary based on activity. We will have a tent and will possibly need help setting it up.",
     "contactName": "Lynn  Jones",
     "email": "Youthurbangarden@gmail.com",
-    "phone": "8505446256"
+    "phone": "8505446256",
+    "siteId": "018-famu-community-garden",
+    "publicDescription": "Student led non-profit garden, working to co- operatively support fresh food needs for Tallahassee's Southside students and community. "
   },
   {
     "name": "Seed Time Harvest Farms",
@@ -187,7 +224,9 @@
     "notes": "May also include planting some crops. Would like to be paired again with the students from last year.",
     "contactName": "Cetta Barnhart",
     "email": "seedtimebiz@gmail.com",
-    "phone": "8502510386"
+    "phone": "8502510386",
+    "siteId": "019-seed-time-harvest-farms",
+    "publicDescription": "A community agriculture partner focused on gardening, sustainability, and local engagement."
   },
   {
     "name": "Bond Elementary School",
@@ -197,7 +236,9 @@
     "notes": "",
     "contactName": "Brenetta Lawrence",
     "email": "brenetta.lawrence@leonschools.net",
-    "phone": "8504458284"
+    "phone": "8504458284",
+    "siteId": "020-bond-elementary-school",
+    "publicDescription": "An elementary school serving local students through education and community engagement."
   },
   {
     "name": "Great Beginnings Preschool",
@@ -207,7 +248,9 @@
     "notes": "",
     "contactName": "Jessica Locke",
     "email": "jess03h@gmail.com",
-    "phone": "850-838-9671"
+    "phone": "850-838-9671",
+    "siteId": "021-great-beginnings-preschool",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Fort Braden School Daddy/Daughter Dance",
@@ -217,7 +260,9 @@
     "notes": "Requests students wear a shirt representing their school",
     "contactName": "Kimberley Wiley ",
     "email": "kimberley.wiley@chsfl.org",
-    "phone": "8502545466"
+    "phone": "8502545466",
+    "siteId": "022-fort-braden-school-daddy-daughter-dance",
+    "publicDescription": "A school participating as a community partner for The Big Event."
   },
   {
     "name": "Cross Creek Family Resource Center",
@@ -227,17 +272,21 @@
     "notes": "",
     "contactName": "Ivory Miller",
     "email": "ivory.miller@chsfl.org",
-    "phone": "8502731050"
+    "phone": "8502731050",
+    "siteId": "023-cross-creek-family-resource-center",
+    "publicDescription": "A community-based organization providing services, support, and resources to local residents."
   },
   {
     "name": "Howard Residence",
-    "address": "Picking weeds, cutting small 🌱 plants",
+    "address": "2044 Valkyrie Court",
     "tasks": "Gardening/Landscaping",
     "volunteers": 4,
     "notes": "Have gloves",
     "contactName": "Mary E Howard",
-    "email": "2044 Valkyrie Court ",
-    "phone": "8503223669"
+    "email": "n/a ",
+    "phone": "8503223669",
+    "siteId": "024-howard-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Griffin Heights Children & Families Resource Center",
@@ -247,7 +296,9 @@
     "notes": "Yes, the building is in the Springfield apartments. Once you enter the complex pass mailboxes and make a right at the 1st round about then right at the dead end and you will see a brown building in 2nd round about.",
     "contactName": "Iranetta Williams",
     "email": "griffinheightsresourcecenter@gmail.com",
-    "phone": "8502740088"
+    "phone": "8502740088",
+    "siteId": "025-griffin-heights-children-families-resour",
+    "publicDescription": "A community-based organization providing services, support, and resources to local residents."
   },
   {
     "name": "Elder Care Services",
@@ -257,7 +308,9 @@
     "notes": "Dress to get dirty",
     "contactName": "Mariposa Wilson",
     "email": "wilsonm@ecsbigbend.org",
-    "phone": "321-795-2103"
+    "phone": "321-795-2103",
+    "siteId": "026-elder-care-services",
+    "publicDescription": "An organization supporting older adults through services, care, and community programs."
   },
   {
     "name": "Summerlin Residence",
@@ -267,7 +320,9 @@
     "notes": "Bring gloves and masks if you want to wear them",
     "contactName": "Linda Summerlin",
     "email": "ldsnotary@gmail.com",
-    "phone": 8508798866
+    "phone": 8508798866,
+    "siteId": "027-summerlin-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Women Empowering Eachother / WEE Diaper Bank",
@@ -277,7 +332,9 @@
     "notes": "Heavy lifting involved; I would like to be matched moreso with students that have nonprofit affiliate aspirations and/or majors, but any students available for that day and those tasks are welcome!",
     "contactName": "Dria Mckinsey",
     "email": "info@weecarediaperbank.org",
-    "phone": 8502703679
+    "phone": 8502703679,
+    "siteId": "028-women-empowering-eachother-wee-diaper-ba",
+    "publicDescription": "A nonprofit organization supporting families by providing essential resources and supplies."
   },
   {
     "name": "Mendenhall Building A Florida State University",
@@ -287,7 +344,9 @@
     "notes": "",
     "contactName": "Maritza Marrero",
     "email": "mnm22e@fsu.edu",
-    "phone": 4075084959
+    "phone": 4075084959,
+    "siteId": "029-mendenhall-building-a-florida-state-univ",
+    "publicDescription": "A community partner."
   },
   {
     "name": "Domi Station",
@@ -297,7 +356,9 @@
     "notes": "Not at this time, however, task and location may change leading up to the 21st.",
     "contactName": "Kaye Crawford",
     "email": "STEMS4GIRLSFL@GMAIL.COM",
-    "phone": 8503008068
+    "phone": 8503008068,
+    "siteId": "030-domi-station",
+    "publicDescription": "A community and innovation space supporting entrepreneurship and local programs."
   },
   {
     "name": "Boys Town North Florida",
@@ -307,7 +368,9 @@
     "notes": "Boys Town has a volunteer dress code policy- Shorts must touch the tips of fingers, no leggings or yoga pants, all tops must have cap sleeves, spaghetti straps are not permitted. Chest, backside and torso must be covered. Clothing should not depict violence, guns, sexuality, foul language, political or social statements, tobacco, drugs, and alcohol.",
     "contactName": "Ellyn Scanlan",
     "email": "ellyn.scanlan@boystown.org",
-    "phone": "850-322-1170"
+    "phone": "850-322-1170",
+    "siteId": "031-boys-town-north-florida",
+    "publicDescription": "At Boys Town, we provide an array of life-changing youth care and services for at-risk youth to help them develop their full potential"
   },
   {
     "name": "Levine Residence",
@@ -317,17 +380,21 @@
     "notes": "Bring gloves,gallon trash bags,rakes",
     "contactName": "Lisa Levine",
     "email": "Here2errand@gmail.com",
-    "phone": "850 254-5139"
+    "phone": "850 254-5139",
+    "siteId": "032-levine-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
-    "name": "Apalache Ridge tech center",
+    "name": "Apalache Ridge Tech Center",
     "address": "937 Kendall drive",
     "tasks": "Surveying",
     "volunteers": 10,
     "notes": "Just be friendly",
     "contactName": "Shauna Smith",
     "email": "Shaunaysmith@gmail.com",
-    "phone": "850 284 3221"
+    "phone": "850 284 3221",
+    "siteId": "033-apalache-ridge-tech-center",
+    "publicDescription": "Focused on addressing the digital divide on the city's southside, it provides technology access and resources. "
   },
   {
     "name": "Unity Eastside Church/Into The Woods Playschool",
@@ -337,7 +404,9 @@
     "notes": "Volunteers will be in the woods in nature. They should dress appropriately, wear bug spray, and bring gloves and shovels if possible. Last year some students were very uncomfortable being outside in nature. It was outside some of their comfort zones. Which is not a bad thing but it would be great if the students knew what they were signing up for and were up for the type of work we need done.",
     "contactName": "Gabrielle Johnston",
     "email": "gabrielle@intothewoodsplayschool.com",
-    "phone": "850-661-6701"
+    "phone": "850-661-6701",
+    "siteId": "034-unity-eastside-church-into-the-woods-pla",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Redemptive Love Farm and Rescue",
@@ -347,7 +416,9 @@
     "notes": "Come in clothes you dont mind getting dirty. Be prepared to get your hands dirty!",
     "contactName": "Savannah Vickery",
     "email": "savannah@redemptivelovefarm.com",
-    "phone": 8508941800
+    "phone": 8508941800,
+    "siteId": "035-redemptive-love-farm-and-rescue",
+    "publicDescription": "A community agriculture partner focused on gardening, sustainability, and local engagement."
   },
   {
     "name": "621 Gallery",
@@ -357,7 +428,9 @@
     "notes": "we are not temperature controlled, so dress for the temp outside, and dress in clothes you don't mind getting dirty or paint on them, daddy long leg spider webs will be part of the cleaning (in case students are afraid of spiders)",
     "contactName": "Gabrielle Simpson",
     "email": "621galleryinc@gmail.com",
-    "phone": "850-209-3505"
+    "phone": "850-209-3505",
+    "siteId": "036-621-gallery",
+    "publicDescription": "A cultural organization preserving and sharing local history, art, and community programs."
   },
   {
     "name": "Grassroots Free School",
@@ -367,7 +440,9 @@
     "notes": "",
     "contactName": "KIm Weinrich",
     "email": "grassrootsschool@gmail.com",
-    "phone": 8505082948
+    "phone": 8505082948,
+    "siteId": "037-grassroots-free-school",
+    "publicDescription": "A school participating as a community partner for The Big Event."
   },
   {
     "name": "Tallahassee Trust for Historic Preservation",
@@ -377,17 +452,21 @@
     "notes": "",
     "contactName": "Chris Carlberg",
     "email": "planning@taltrust.org",
-    "phone": 3522509009
+    "phone": 3522509009,
+    "siteId": "038-tallahassee-trust-for-historic-preservat",
+    "publicDescription": "A nonprofit organization dedicated to preserving local history and historic places."
   },
   {
     "name": "Miccosukee Hills Condominiums",
     "address": "1636 Miccosukee Loop, Tallahassee Florida. 32308 (make sure to go past the sign that says \"Cottages of Miccosukee\"",
     "tasks": "Gardening/Landscaping,Washing Windows,Indoor/Outdoor Painting (note: The Big Event Tallahassee does not provide paint),Trash Cleanup",
     "volunteers": 50,
-    "notes": "We will be so grateful for the volunteer’s hands and their hearts.   Please know that they will be making a massive difference in our daily lives!\nTheir hard work will do more than just clean a window or pull a weed—it provides us with a brighter view from our windows, and the joy of seeing their energy in our neighborhood.",
+    "notes": "We will be so grateful for the volunteer\u2019s hands and their hearts.   Please know that they will be making a massive difference in our daily lives!\nTheir hard work will do more than just clean a window or pull a weed\u2014it provides us with a brighter view from our windows, and the joy of seeing their energy in our neighborhood.",
     "contactName": "Sara Deneke",
     "email": "softspot.sd@gmail.com",
-    "phone": "206-276-5899"
+    "phone": "206-276-5899",
+    "siteId": "039-miccosukee-hills-condominiums",
+    "publicDescription": "Miccosukee Hills Apartments is a 106-unit community for individuals 62 years of age or older, or those who are handicap/disabled regardless of age."
   },
   {
     "name": "Hebert Residence",
@@ -397,7 +476,9 @@
     "notes": "Drive can only park three cars; would like same group as last year",
     "contactName": "Cheryl Hebert",
     "email": "Frogs33154@gmail.com",
-    "phone": "850-688-0698"
+    "phone": "850-688-0698",
+    "siteId": "040-hebert-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Ivy Residence",
@@ -407,7 +488,9 @@
     "notes": "",
     "contactName": "Charlotta Ivy",
     "email": "lottaivy@gmail.com@gmail.com",
-    "phone": "850-345-7535"
+    "phone": "850-345-7535",
+    "siteId": "041-ivy-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "iGrow Garden ",
@@ -417,7 +500,9 @@
     "notes": "Dress for gardening",
     "contactName": "Ms Mitchell ",
     "email": "611 Dent St. Tallahassee Florida 323-04",
-    "phone": "850-284-0366"
+    "phone": "850-284-0366",
+    "siteId": "042-igrow-garden",
+    "publicDescription": "A community agriculture partner focused on gardening, sustainability, and local engagement."
   },
   {
     "name": "Abellera Residence",
@@ -427,7 +512,9 @@
     "notes": "Heavy Lifting + Contact with AnimalsThe property is adjacent to an unincorporated mixed hardwood forest. As there is no bounding fence, wildlife is free to roam to and from the property. The biggest concern is that there may be hibernating snakes under rocks or stones. Snakes will flee from the area if there is a good amount of human activity. As this is Florida, other insects and organisms will be present on the property including ticks, mosquitoes, wasps, and spiders. Closed toe shoes is mandatory. Long socks, long pants, breathable long sleeve shirt, and work gloves will reduce the chance of bites and stings from these organisms. Eye protection can be available for working in wooded areas to avoid pokes from eye-level branches. I can provide bottles of water and packaged snacks for volunteers.",
     "contactName": "Richmond Abellera",
     "email": "richmond.southernroots@gmail.com",
-    "phone": "850-264-8922"
+    "phone": "850-264-8922",
+    "siteId": "043-abellera-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Rowan Residence",
@@ -437,7 +524,9 @@
     "notes": "Contact with Animals ",
     "contactName": "Thomas Rowan",
     "email": "rowanpsy@yahoo.com",
-    "phone": "8504084302"
+    "phone": "8504084302",
+    "siteId": "044-rowan-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Johnston Residence",
@@ -447,7 +536,9 @@
     "notes": "Heavy lifting  + Contact with Animals. I do have an electric mower and not many gardening tools",
     "contactName": "Yara Johnston",
     "email": "612 Dent St. Tallahassee Florida 323-04",
-    "phone": "850-284-0367"
+    "phone": "850-284-0367",
+    "siteId": "045-johnston-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Unitarian Universalist Church of Tallahassee",
@@ -457,17 +548,21 @@
     "notes": "We will provide snacks for the volunteers",
     "contactName": "Bonnie Abellera",
     "email": "leonpta1@yahoo.com",
-    "phone": "8509661444"
+    "phone": "8509661444",
+    "siteId": "046-unitarian-universalist-church-of-tallaha",
+    "publicDescription": "A local faith and community organization participating in service and outreach."
   },
   {
     "name": "Russell Oaks Homeowners Association ",
     "address": "2248 Paul Russell Circle Tallahassee, FL 32301",
     "tasks": "Gardening/Landscaping,Trash Cleanup,Other",
     "volunteers": 6,
-    "notes": "We’re a small community off of Paul Russell Rd. and I’m the HOA president.",
+    "notes": "We\u2019re a small community off of Paul Russell Rd. and I\u2019m the HOA president.",
     "contactName": "Julie Alexander",
     "email": "julieinflorida@gmail.com",
-    "phone": "8502284388"
+    "phone": "8502284388",
+    "siteId": "047-russell-oaks-homeowners-association",
+    "publicDescription": "A neighborhood community partner participating in local beautification and service projects."
   },
   {
     "name": "Sisters Mentoring Sisters, The Lori Page Center",
@@ -477,7 +572,9 @@
     "notes": "",
     "contactName": "STEPHANIE COUNCIL TOLBERT",
     "email": "SISTERSMENTORINGSISTERS2020@GMAIL.COM",
-    "phone": "8503225688"
+    "phone": "8503225688",
+    "siteId": "048-sisters-mentoring-sisters-the-lori-page-",
+    "publicDescription": "Sisters Mentoring Sisters program is a gender-responsive support group model designed for girls generally ages 9 to 18. Rooted in positive youth development."
   },
   {
     "name": "Louise B. Royal",
@@ -487,17 +584,21 @@
     "notes": "No",
     "contactName": "Shalyndria Corker",
     "email": "shalyndria.corker@cacaainc.org",
-    "phone": "850-201-0090"
+    "phone": "850-201-0090",
+    "siteId": "049-louise-b-royal",
+    "publicDescription": "A community partner participating in The Big Event volunteer program."
   },
   {
-    "name": "BuddBell early learning center",
+    "name": "BuddBell Early Learning Center",
     "address": "306 Laura lee Ave, Tallahassee fl ",
     "tasks": "Gardening/Landscaping,Indoor/Outdoor Painting, Archival/Office Work,Trash Cleanup",
     "volunteers": 20,
     "notes": "No",
     "contactName": "Isabella Kruger",
     "email": "ikruger@kidsincorporated.org",
-    "phone": "8504149800 ext.101"
+    "phone": "8504149800 ext.101",
+    "siteId": "050-buddbell-early-learning-center",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Tallahassee Museum",
@@ -507,7 +608,9 @@
     "notes": "Might be working in a tight space from time to time",
     "contactName": "Kat Cunningham",
     "email": "kcunningham@tallahasseemuseum.org",
-    "phone": "8505758684"
+    "phone": "8505758684",
+    "siteId": "051-tallahassee-museum",
+    "publicDescription": "A cultural organization preserving and sharing local history, art, and community programs."
   },
   {
     "name": "Hoffmann Residence",
@@ -517,7 +620,9 @@
     "notes": "I will provide tools to do the job.",
     "contactName": "Luis Hoffmann",
     "email": "Mdpd3878@yahoo.com",
-    "phone": "954-253-9625"
+    "phone": "954-253-9625",
+    "siteId": "052-hoffmann-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "All Things Are Possible Magnolia Terrace Apartments ",
@@ -527,7 +632,9 @@
     "notes": "They will have so much fun with the kids and will have a rewarding experience. ",
     "contactName": "Veronica Miller",
     "email": "magnoliat@atap-us.org",
-    "phone": "850-405-5851"
+    "phone": "850-405-5851",
+    "siteId": "053-all-things-are-possible-magnolia-terrace",
+    "publicDescription": "A community partner participating in The Big Event volunteer program."
   },
   {
     "name": "McCaskill Residence",
@@ -537,7 +644,9 @@
     "notes": "Please come in the morning. I have a conflict at 2 p.m. - 3 p.m. No restrooms available",
     "contactName": "Tiffany McCaskill",
     "email": "tifftenn10@yahoo.com",
-    "phone": "8509335928"
+    "phone": "8509335928",
+    "siteId": "054-mccaskill-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Nelson Residence",
@@ -547,17 +656,21 @@
     "notes": "",
     "contactName": "Linda Nelson",
     "email": "lindapnelson@hotmail.com",
-    "phone": "850-567-3373"
+    "phone": "850-567-3373",
+    "siteId": "055-nelson-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
-    "name": "Hayes residence",
+    "name": "Hayes Residence",
     "address": "3561 Beaver Creek Court",
     "tasks": "Other",
     "volunteers": "4",
     "notes": "",
     "contactName": "Dr. Monica Hayes",
     "email": "hayeseducationalconsulting@gmail.com",
-    "phone": "850-294-3168"
+    "phone": "850-294-3168",
+    "siteId": "056-hayes-residence",
+    "publicDescription": "A private residence participating in The Big Event to receive volunteer assistance."
   },
   {
     "name": "Bull Run Unit 1 HOA",
@@ -567,7 +680,9 @@
     "notes": "Beds up against house, front and sides, and a large bed in front yard.",
     "contactName": "Kathy Alexander",
     "email": "Bri1.kalexander",
-    "phone": "1850329055"
+    "phone": "1850329055",
+    "siteId": "057-bull-run-unit-1-hoa",
+    "publicDescription": "A neighborhood community partner participating in local beautification and service projects."
   },
   {
     "name": "Forest Edge Neighborhood",
@@ -577,7 +692,9 @@
     "notes": "Lunch will be provided.",
     "contactName": "Sharon P Gray",
     "email": "sharonpgray2012@gmail.com",
-    "phone": "8505103076"
+    "phone": "8505103076",
+    "siteId": "058-forest-edge-neighborhood",
+    "publicDescription": "A neighborhood community partner participating in local beautification and service projects."
   },
   {
     "name": "Magnolia Preschool ",
@@ -587,7 +704,9 @@
     "notes": "They should dress accordingly to help with landscaping.",
     "contactName": "Rose Skepple",
     "email": "rose@magnoliachildren.com",
-    "phone": "850-325-1168"
+    "phone": "850-325-1168",
+    "siteId": "059-magnolia-preschool",
+    "publicDescription": "An early learning organization supporting children\u2019s growth and development."
   },
   {
     "name": "Astoria Park Elementary",
@@ -597,6 +716,8 @@
     "notes": "",
     "contactName": "Katrina Bradwell",
     "email": "bradwellk@leonschools.net",
-    "phone": "(850)728-5067"
+    "phone": "(850)728-5067",
+    "siteId": "060-astoria-park-elementary",
+    "publicDescription": "An elementary school serving local students through education and community engagement."
   }
 ]
