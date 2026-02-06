@@ -39,6 +39,21 @@
       background-size: auto, auto, auto, 18px 18px;
       background-color: #fff;
     }
+
+    /* Modal open/close animation */
+    #orgModal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #orgModal.is-open .modal-card {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    #orgModal .modal-card {
+      transform: translateY(8px) scale(0.98);
+      opacity: 0;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
   </style>
 </head>
 
@@ -47,13 +62,13 @@
 <nav class="bg-brand-Green/95 backdrop-blur p-2 shadow-lg sticky top-0 z-50 border-b border-white/30">
   <div class="container mx-auto flex justify-between items-center px-2">
     <a href="index.html" class="flex items-center gap-3 text-white">
-      <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-16 w-16" />
+      <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-16 w-16" alt="Big Event logo" />
       <span class="hidden sm:inline text-2xl font-bold">Big Event</span>
     </a>
     <div class="hidden md:flex gap-3 text-white text-lg">
-      <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20">Login</a>
-      <a href="history.html" class="px-4 py-2 rounded-full hover:bg-white/20">History</a>
+      <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20">Assignment</a>
       <a href="org.html" class="px-4 py-2 rounded-full bg-white/20">Organizations</a>
+      <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-white/20">Contact</a>
     </div>
   </div>
 </nav>
@@ -61,7 +76,7 @@
 <main class="flex-grow container mx-auto px-6 py-12">
 
   <section class="text-center mb-12">
-    <h1 class="text-5xl md:text-6xl font-chunk text-brand-BlueMedium">
+    <h1 id="pageTitle" class="text-5xl md:text-6xl font-chunk text-brand-BlueMedium">
       Partner Organizations
     </h1>
     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
@@ -98,103 +113,268 @@
     </div>
   </section>
 
-  <script>
-    const grid = document.getElementById("orgGrid");
-    const meta = document.getElementById("orgMeta");
-    const search = document.getElementById("orgSearch");
-
-    let allSites = [];
-
-    function escapeHtml(str) {
-      return String(str ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    function splitTasks(tasksStr) {
-      if (!tasksStr) return [];
-      return String(tasksStr)
-        .split(",")
-        .map(t => t.trim())
-        .filter(Boolean)
-        .slice(0, 4); // show up to 4 badges
-    }
-
-    function card(site) {
-      const name = escapeHtml(site.name);
-      const address = escapeHtml(site.address || "");
-      const description = escapeHtml(site.publicDescription || "");
-      const volunteers = escapeHtml(site.volunteers || "");
-      const tasks = splitTasks(site.tasks);
-
-      const badges = tasks.map(t => `
-        <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-BlueLight/35 text-brand-BlueMedium text-xs font-semibold">
-          ${escapeHtml(t)}
-        </span>
-      `).join("");
-
-      return `
-        <article class="bg-white/85 backdrop-blur rounded-3xl p-6 shadow-lg border border-brand-BlueLight/60 hover:-translate-y-1 transition">
-          <h3 class="text-xl font-bold text-brand-BlueMedium">${name}</h3>
-
-          ${address ? `<p class="mt-2 text-sm text-gray-600"><span class="font-semibold">Address:</span> ${address}</p>` : ""}
-
-          ${badges ? `<div class="mt-4 flex flex-wrap gap-2">${badges}</div>` : ""}
-
-          <div class="mt-4 text-sm text-gray-700 space-y-1">
-            ${volunteers ? `<p><span class="font-semibold">Volunteers:</span> ${volunteers}</p>` : ""}
-            ${description ? `<p class="text-gray-600"><span class="font-semibold text-gray-700">About:</span> ${description}</p>` : ""}
-          </div>
-        </article>
-      `;
-    }
-
-    function render(list) {
-      grid.innerHTML = list.map(card).join("");
-      meta.textContent = `${list.length} site${list.length === 1 ? "" : "s"} shown`;
-    }
-
-    function applyFilter() {
-      const q = search.value.trim().toLowerCase();
-      if (!q) return render(allSites);
-
-      const filtered = allSites.filter(s => {
-        const hay = [s.name, s.address, s.tasks, s.publicDescription].join(" ").toLowerCase();
-        return hay.includes(q);
-      });
-
-      render(filtered);
-    }
-
-    async function init() {
-      try {
-        const res = await fetch("sites.json", { cache: "no-store" });
-        if (!res.ok) throw new Error(`Could not load)`);
-
-        allSites = await res.json();
-
-        // Sort alphabetically
-        allSites.sort((a, b) => String(a.name).localeCompare(String(b.name)));
-
-        render(allSites);
-        search.addEventListener("input", applyFilter);
-      } catch (err) {
-        meta.textContent = "Could not load organizations data. Make sure sites.json is in the same folder as org.html.";
-        console.error(err);
-      }
-    }
-
-    init();
-  </script>
-
 </main>
 
 <footer class="bg-brand-Green text-white py-3 text-center border-t border-white/30">
   <p>&copy; 2026 Big Event</p>
 </footer>
+
+<!-- Modal overlay (hidden by default) -->
+<div
+  id="orgModal"
+  class="fixed inset-0 z-[60] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-150"
+  aria-hidden="true"
+>
+  <!-- click-off backdrop -->
+  <div id="orgModalBackdrop" class="absolute inset-0 bg-black/35"></div>
+
+  <!-- modal card -->
+  <div
+    class="modal-card relative w-[92vw] max-w-2xl mx-auto bg-white/95 backdrop-blur rounded-3xl shadow-2xl border border-brand-BlueLight/70 p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <button
+      id="orgModalClose"
+      class="absolute top-4 right-4 inline-flex items-center justify-center w-10 h-10 rounded-full border border-brand-BlueLight/70 bg-white/80 hover:bg-white transition text-brand-BlueMedium"
+      aria-label="Close"
+      type="button"
+    >
+      ✕
+    </button>
+
+    <h2 id="modalTitle" class="text-3xl font-bold text-brand-BlueMedium"></h2>
+
+    <p id="modalAddress" class="mt-2 text-gray-600"></p>
+
+    <div id="modalBadges" class="mt-4 flex flex-wrap gap-2"></div>
+
+    <div class="mt-6 space-y-3 text-gray-700">
+      <p id="modalVolunteers"></p>
+      <p id="modalTasks"></p>
+      <p id="modalAbout" class="text-gray-600"></p>
+      <p id="modalNotes" class="text-sm text-gray-600"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const grid = document.getElementById("orgGrid");
+  const meta = document.getElementById("orgMeta");
+  const search = document.getElementById("orgSearch");
+
+  const modal = document.getElementById("orgModal");
+  const modalBackdrop = document.getElementById("orgModalBackdrop");
+  const modalClose = document.getElementById("orgModalClose");
+
+  const modalTitle = document.getElementById("modalTitle");
+  const modalAddress = document.getElementById("modalAddress");
+  const modalBadges = document.getElementById("modalBadges");
+  const modalVolunteers = document.getElementById("modalVolunteers");
+  const modalTasks = document.getElementById("modalTasks");
+  const modalAbout = document.getElementById("modalAbout");
+  const modalNotes = document.getElementById("modalNotes");
+
+  let allSites = [];
+  let currentList = [];
+
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function splitTasks(tasksStr) {
+    if (!tasksStr) return [];
+    return String(tasksStr)
+      .split(",")
+      .map(t => t.trim())
+      .filter(Boolean)
+      .slice(0, 6);
+  }
+
+  function makeBadges(tasks) {
+    return tasks.map(t => `
+      <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-BlueLight/35 text-brand-BlueMedium text-xs font-semibold">
+        ${escapeHtml(t)}
+      </span>
+    `).join("");
+  }
+
+  function openModal(site) {
+    // Fill modal content
+    modalTitle.textContent = site.name || "";
+    modalAddress.innerHTML = site.address
+      ? `<span class="font-semibold">Address:</span> ${escapeHtml(site.address)}`
+      : "";
+
+    const tasksArr = splitTasks(site.tasks);
+    modalBadges.innerHTML = tasksArr.length ? makeBadges(tasksArr) : "";
+
+    modalVolunteers.innerHTML = site.volunteers
+      ? `<span class="font-semibold">Volunteers:</span> ${escapeHtml(site.volunteers)}`
+      : "";
+
+    modalTasks.innerHTML = site.tasks
+      ? `<span class="font-semibold">Tasks:</span> ${escapeHtml(site.tasks)}`
+      : "";
+
+    modalAbout.innerHTML = site.publicDescription
+      ? `<span class="font-semibold text-gray-700">About:</span> ${escapeHtml(site.publicDescription)}`
+      : "";
+
+    modalNotes.innerHTML = site.notes
+      ? `<span class="font-semibold">Notes:</span> ${escapeHtml(site.notes)}`
+      : "";
+
+    // Show modal
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    // Optional: prevent background scroll while modal open (background visuals remain)
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function card(site, idx) {
+    const name = escapeHtml(site.name);
+    const address = escapeHtml(site.address || "");
+    const description = escapeHtml(site.publicDescription || "");
+    const volunteers = escapeHtml(site.volunteers || "");
+    const tasks = splitTasks(site.tasks);
+
+    const badges = tasks.length ? `<div class="mt-4 flex flex-wrap gap-2">${makeBadges(tasks)}</div>` : "";
+
+    // data-idx ties the element to the current rendered list without rerendering on open/close
+    return `
+      <article
+        class="org-card cursor-pointer bg-white/85 backdrop-blur rounded-3xl p-6 shadow-lg border border-brand-BlueLight/60 hover:-translate-y-1 transition focus:outline-none focus:ring-4 focus:ring-brand-BlueLight/50"
+        tabindex="0"
+        data-idx="${idx}"
+        role="button"
+        aria-label="Open ${name}"
+      >
+        <h3 class="text-xl font-bold text-brand-BlueMedium">${name}</h3>
+
+        ${address ? `<p class="mt-2 text-sm text-gray-600"><span class="font-semibold">Address:</span> ${address}</p>` : ""}
+
+        ${badges}
+
+        <div class="mt-4 text-sm text-gray-700 space-y-1">
+          ${volunteers ? `<p><span class="font-semibold">Volunteers:</span> ${volunteers}</p>` : ""}
+          ${description ? `<p class="text-gray-600"><span class="font-semibold text-gray-700">About:</span> ${description}</p>` : ""}
+        </div>
+      </article>
+    `;
+  }
+
+  function render(list) {
+    currentList = list;
+    grid.innerHTML = list.map((s, i) => card(s, i)).join("");
+    meta.textContent = `${list.length} site${list.length === 1 ? "" : "s"} shown`;
+  }
+
+  function applyFilter() {
+    const q = search.value.trim().toLowerCase();
+    if (!q) return render(allSites);
+
+    const filtered = allSites.filter(s => {
+      const hay = [s.name, s.address, s.tasks, s.publicDescription].join(" ").toLowerCase();
+      return hay.includes(q);
+    });
+
+    render(filtered);
+  }
+
+  // Event delegation: no rerender needed for open/close
+  grid.addEventListener("click", (e) => {
+    const cardEl = e.target.closest(".org-card");
+    if (!cardEl) return;
+    const idx = Number(cardEl.dataset.idx);
+    const site = currentList[idx];
+    if (site) openModal(site);
+  });
+
+  grid.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const cardEl = e.target.closest(".org-card");
+    if (!cardEl) return;
+    e.preventDefault();
+    const idx = Number(cardEl.dataset.idx);
+    const site = currentList[idx];
+    if (site) openModal(site);
+  });
+
+  // Close interactions
+  modalBackdrop.addEventListener("click", closeModal);
+  modalClose.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+  });
+
+  async function init() {
+    try {
+      const res = await fetch("sites.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Could not load sites.json");
+
+      allSites = await res.json();
+
+      const siteParam = getParam("site");
+      const volParam = getParam("vol");
+
+      // If arriving from results.html with ?site=... show that org immediately in modal
+      if (siteParam) {
+        // Keep your original exact-match behavior
+        const found = allSites.find(s => String(s.name || "").trim() === String(siteParam).trim());
+        if (!found) {
+          meta.textContent = `Could not find organization: ${siteParam}`;
+          return;
+        }
+
+        // Update title + meta like your single-view did
+        const titleEl = document.getElementById("pageTitle");
+        if (titleEl) titleEl.textContent = found.name;
+
+        meta.innerHTML = volParam
+          ? `Assigned volunteer: <b>${escapeHtml(volParam)}</b>`
+          : "Assignment details";
+
+        // Still render the grid in the background (unchanged), then pop modal
+        allSites.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+        render(allSites);
+
+        if (search) search.style.display = "none";
+
+        openModal(found);
+        return;
+      }
+
+      // Normal browse mode
+      allSites.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+      render(allSites);
+      search.addEventListener("input", applyFilter);
+
+    } catch (err) {
+      meta.textContent = "Could not load organizations data. Make sure sites.json is in the same folder as org.html.";
+      console.error(err);
+    }
+  }
+
+  init();
+</script>
 
 </body>
 </html>
