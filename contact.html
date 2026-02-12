@@ -30,7 +30,8 @@
   <style>
     body {
       font-family: "century-gothic", sans-serif;
-      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
       background:
         radial-gradient(circle at 20% 10%, rgba(161,197,221,.45), transparent 35%),
         radial-gradient(circle at 85% 0%, rgba(134,190,66,.14), transparent 40%),
@@ -85,16 +86,29 @@
 <body class="text-gray-800 flex flex-col min-h-screen">
 
 <nav class="bg-brand-Green/95 backdrop-blur p-2 shadow-lg sticky top-0 z-50 border-b border-white/30">
-  <div class="container mx-auto flex justify-between items-center px-2">
+  <div class="container mx-auto flex items-center justify-between px-2">
     <a href="index.html" class="flex items-center gap-3 text-white">
       <img src="TheBigEvent_Logo_TheBigEvent-White-Logo_Smaller.png" class="h-16 w-16" alt="Big Event logo" />
-      <span class="hidden sm:inline text-2xl font-bold">Big Event</span>
+      <span class="hidden sm:inline text-2xl font-bold tracking-wide">Big Event</span>
     </a>
-    <div class="hidden md:flex gap-3 text-white text-lg">
-      <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20">Assignment</a>
-      <a href="org.html" class="px-4 py-2 rounded-full hover:bg-white/20">Organizations</a>
+
+    <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Open menu">
+      <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+    <div class="hidden md:flex items-center gap-3 text-white text-lg">
+      <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Assignment</a>
+      <a href="org.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Organizations</a>
       <a href="contact.html" class="px-4 py-2 rounded-full bg-white/20">Contact</a>
     </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden mt-3 text-center rounded-2xl p-3 mx-2 bg-white/85 backdrop-blur border border-brand-BlueLight/60">
+    <a href="index.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">Assignment</a>
+    <a href="org.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">Organizations</a>
+    <a href="contact.html" class="block py-2 rounded-xl hover:bg-brand-BlueLight/35 transition">Contact</a>
   </div>
 </nav>
 
@@ -123,9 +137,7 @@
             <p class="text-sm text-gray-500">Executive Director</p>
             <h2 class="mt-1 text-2xl font-bold text-brand-BlueMedium">Camila Roman</h2>
           </div>
-          <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-BlueLight/35 text-brand-BlueMedium text-xs font-semibold">
-            Email
-          </span>
+          
         </div>
 
         <p class="mt-4 text-gray-700">
@@ -133,24 +145,15 @@
           <a class="text-brand-BlueMedium font-semibold underline" href="mailto:thebigevent@fsu.edu">thebigevent@fsu.edu</a>
         </p>
 
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="mailto:cmr22c@fsu.edu">
-            <!-- mail icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M4 6h16v12H4V6Z" stroke="white" stroke-width="2" opacity=".9"/>
-              <path d="m4 7 8 6 8-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Email Camila
+        <p class="mt-4 text-gray-700">
+          <span class="font-semibold">Phone:</span>
+          <a href="tel:+19549522150" class="text-brand-BlueMedium font-semibold underline">
+            +1 (954) 952-2150
           </a>
+        </p>
 
-          <button id="copyEmail" class="btn btn-secondary" type="button">
-            <!-- copy icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M9 9h10v10H9V9Z" stroke="#488CC0" stroke-width="2"/>
-              <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="#488CC0" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            Copy Email
-          </button>
+        <div class="mt-5 flex flex-wrap gap-3">
+  
 
           <span id="toast" class="hidden text-sm text-gray-500 self-center">Copied!</span>
         </div>
@@ -178,21 +181,7 @@
         </p>
 
         <div class="mt-5 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="https://www.instagram.com/thebigeventtally/" target="_blank" rel="noopener">
-            <!-- external icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M14 5h5v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <path d="M10 14 19 5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <path d="M19 14v5H5V5h5" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            Open Instagram
-          </a>
-
-          <button id="copyIG" class="btn btn-secondary" type="button">
-            Copy Link
-          </button>
-
-          <span id="toastIG" class="hidden text-sm text-gray-500 self-center">Copied!</span>
+         
         </div>
 
       </div>
@@ -249,5 +238,26 @@
   });
 </script>
 
+  <script>
+  (() => {
+    const btn = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+
+    // Close mobile menu when a link is clicked
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => menu.classList.add("hidden"));
+    });
+
+    // Escape to close
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") menu.classList.add("hidden");
+    });
+  })();
+</script>
 </body>
 </html>
