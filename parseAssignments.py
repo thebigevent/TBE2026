@@ -2,7 +2,7 @@ import pandas as pd
 import json
 import re
 
-XLSX_PATH = "TLE 2025 SITE ASSIGNMENTS.xlsx"
+XLSX_PATH = "TBE26 SITE ASSIGNMENTS.xlsx"
 OUT_PATH  = "assignments.json"
 
 def norm(s: str) -> str:
@@ -10,15 +10,16 @@ def norm(s: str) -> str:
     s = re.sub(r"[^a-z0-9]+", "", s)   # keep alnum only
     return s
 
-df = pd.read_excel(XLSX_PATH, sheet_name="Big Master Sheet")
+df = pd.read_excel(XLSX_PATH, sheet_name="Sheet1")
 
 # pick the main assignment columns
 df = df.rename(columns={
-    "First Name": "first",
-    "Last Name": "last",
-    "Service Site": "site",
-    "Group": "group"
+    "First name": "first",
+    "Last name": "last",
+    "Site": "site",
+    "Organization/RSO": "group"
 })
+print(df.columns.tolist())
 
 df = df[["first", "last", "site", "group"]].dropna(subset=["first", "last", "site"])
 
