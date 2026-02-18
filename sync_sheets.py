@@ -21,7 +21,7 @@ ASSIGNMENTS_SHEET_ID = os.environ.get(
     "ASSIGNMENTS_SHEET_ID",
     "1On6ZSx9Y5DiSwHQ8xsA61IR3AqIsZB-frMrHul4HrMs",
 )
-ASSIGNMENTS_GID = os.environ.get("ASSIGNMENTS_GID", "1887412390")
+ASSIGNMENTS_GID = os.environ.get("ASSIGNMENTS_GID", "0")
 
 SITES_SHEET_ID = os.environ.get(
     "SITES_SHEET_ID",
@@ -62,25 +62,22 @@ def slugify(s: str) -> str:
     return re.sub(r"-{2,}", "-", s).strip("-")
 
 
+def col(row: dict, *candidates: str) -> str:
+    """Return the first matching column value from a row (case-insensitive)."""
+    for c in candidates:
+        for k in row:
+            if (k or "").strip().lower() == c.strip().lower():
+                return (row[k] or "").strip()
+    return ""
+
+
 # ── Assignments ───────────────────────────────────────────────────────────────
+# Actual sheet columns:
+#   Group Number | First name | Last name | School |
+#   How are you participating in The Big Event? | Organization/RSO |
+#   Delegate | Site | Address
 
 def build_assignments(rows: list[dict]) -> dict:
-    """
-    Expected columns (case-insensitive, flexible):
-      First name / First Name / first
-      Last name  / Last Name  / last
-      Site
-      Organization/RSO  (optional)
-      Crew Leader (optional)
-    """
-    # Normalise header lookup
-    def col(row: dict, *candidates: str) -> str:
-        for c in candidates:
-            for k in row:
-                if k.strip().lower() == c.lower():
-                    return (row[k] or "").strip()
-        return ""
-
     assignments: dict = {}
     dupes: list = []
 
@@ -89,17 +86,18 @@ def build_assignments(rows: list[dict]) -> dict:
         last  = col(r, "Last name",  "Last Name",  "last")
         site  = col(r, "Site", "site")
         group = col(r, "Organization/RSO", "Organization", "RSO", "group")
-        crew  = col(r, "Crew Leader", "crew leader", "crew")
+        # "Delegate" is the crew/team leader indicator in this sheet
+        crew  = col(r, "Delegate", "Crew Leader", "crew leader", "crew")
 
         if not first or not last or not site:
-            continue  # skip empty rows
+            continue  # skip blank rows
 
         key  = norm(first + last)
         item = {
-            "first": first,
-            "last":  last,
-            "site":  site,
-            "group": group,
+            "first":      first,
+            "last":       last,
+            "site":       site,
+            "group":      group,
             "crewLeader": crew,
         }
 
@@ -119,35 +117,32 @@ def build_assignments(rows: list[dict]) -> dict:
 
 
 # ── Sites ─────────────────────────────────────────────────────────────────────
+# Actual sheet columns:
+#   Site Name | Contact Name | Phone Number | Email | Site Address |
+#   Tasks That Will Be Performed | Task Performed Text Entry |
+#   Special Notes | Bio
 
 def build_sites(rows: list[dict]) -> list[dict]:
-    """
-    Expected columns (adapt to whatever the bios sheet uses):
-      Service Site Name  (required)
-      Address
-      Tasks
-      Volunteer Count
-      Notes
-      Contact Name
-      Email
-      Phone
-      Public Description
-    """
-    def col(row: dict, *candidates: str) -> str:
-        for c in candidates:
-            for k in row:
-                if k.strip().lower() == c.lower():
-                    return (row[k] or "").strip()
-        return ""
-
     sites = []
+
     for r in rows:
-        name = col(r, "Service Site Name", "Site Name", "Name", "name")
+        name = col(r, "Site Name", "Service Site Name", "Name", "name")
         if not name:
             continue
 
-        # volunteers: coerce to int
-        vol_raw = col(r, "Volunteer Count", "Volunteers", "volunteer count")
+        # Badge labels – already comma-separated task types
+        tasks = col(r, "Tasks That Will Be Performed", "Tasks", "Task(s)")
+
+        # Free-text work description (stored, shown on results page)
+        work_desc = col(r, "Task Performed Text Entry", "Work Description",
+                        "Public Description", "Description")
+
+        # Organisation background / bio (shown labeled on org + results pages)
+        bio = col(r, "Bio", "Organization Bio", "About the Organization", "About")
+
+        public_desc = work_desc
+
+        vol_raw = col(r, "Volunteer Count", "Volunteers", "Volunteers Needed", "# Volunteers")
         try:
             volunteers = int(float(vol_raw)) if vol_raw else 0
         except ValueError:
@@ -158,14 +153,15 @@ def build_sites(rows: list[dict]) -> list[dict]:
         sites.append({
             "siteId":            site_id,
             "name":              name,
-            "address":           col(r, "Address", "address"),
-            "tasks":             col(r, "Tasks", "tasks"),
+            "address":           col(r, "Site Address", "Address", "address"),
+            "tasks":             tasks,
             "volunteers":        volunteers,
-            "notes":             col(r, "Notes", "notes"),
-            "contactName":       col(r, "Contact Name", "contact name"),
-            "email":             col(r, "Email", "email"),
-            "phone":             col(r, "Phone", "phone"),
-            "publicDescription": col(r, "Public Description", "public description", "Description"),
+            "notes":             col(r, "Special Notes", "Notes", "notes", "Additional Notes"),
+            "contactName":       col(r, "Contact Name", "contact name", "Contact"),
+            "email":             col(r, "Email", "email", "Contact Email"),
+            "phone":             col(r, "Phone Number", "Phone", "phone", "Contact Phone"),
+            "publicDescription": public_desc,
+            "bio":               bio,
         })
 
     return sites
@@ -185,7 +181,7 @@ def main():
     # --- Assignments ---
     print("📥 Fetching assignments sheet …")
     try:
-        url = csv_url(ASSIGNMENTS_SHEET_ID, ASSIGNMENTS_GID)
+        url  = csv_url(ASSIGNMENTS_SHEET_ID, ASSIGNMENTS_GID)
         rows = fetch_csv(url)
         print(f"   {len(rows)} rows fetched.")
         assignments = build_assignments(rows)
@@ -198,7 +194,7 @@ def main():
     # --- Sites ---
     print("📥 Fetching service-site bios sheet …")
     try:
-        url = csv_url(SITES_SHEET_ID, SITES_GID)
+        url  = csv_url(SITES_SHEET_ID, SITES_GID)
         rows = fetch_csv(url)
         print(f"   {len(rows)} rows fetched.")
         sites = build_sites(rows)

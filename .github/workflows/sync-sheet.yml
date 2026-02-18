@@ -27,7 +27,7 @@ jobs:
           ASSIGNMENTS_GID:      ${{ vars.ASSIGNMENTS_GID || '1887412390' }}
           SITES_SHEET_ID:       ${{ vars.SITES_SHEET_ID || '1gO41fLDZweadUq0y_Y-0yx0ChU_eI0t9ZpFWx2uS4-c' }}
           SITES_GID:            ${{ vars.SITES_GID || '0' }}
-        run: python scripts/sync_sheets.py
+        run: python sync_sheets.py
 
       - name: Commit & push if data changed
         run: |

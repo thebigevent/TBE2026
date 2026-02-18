@@ -49,6 +49,8 @@
   </style>
 </head>
 
+<body class="text-gray-800 flex flex-col min-h-screen">
+
   <!-- NAV -->
   <nav class="bg-brand-Green/95 backdrop-blur p-2 shadow-lg sticky top-0 z-50 border-b border-white/30">
   <div class="container mx-auto flex items-center justify-between px-2">
@@ -64,7 +66,7 @@
     </button>
 
     <div class="hidden md:flex items-center gap-3 text-white text-lg">
-      <a href="index.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Assignment</a>
+      <a href="index.html" class="px-4 py-2 rounded-full bg-white/20">Assignment</a>
       <a href="org.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Organizations</a>
       <a href="contact.html" class="px-4 py-2 rounded-full hover:bg-white/20 transition">Contact</a>
     </div>
@@ -149,10 +151,10 @@
 
             <div class="mt-4 flex flex-wrap gap-2" id="taskBadges"></div>
 
-            <div class="mt-5 space-y-2 text-gray-700">
-              <p id="orgTasks"></p>
+            <div class="mt-5 space-y-3 text-gray-700">
               <p class="text-gray-600" id="orgAbout"></p>
-              <p class="text-sm text-gray-600" id="orgNotes"></p>
+              <p class="text-gray-600" id="orgWorkDesc"></p>
+              <p class="text-gray-600" id="orgNotes"></p>
             </div>
 
             <!-- Map / Copy Address -->
@@ -211,7 +213,7 @@
               <p class="font-semibold text-gray-700">Need help?</p>
               <p class="mt-1">
                 If anything looks incorrect, contact The Big Event at
-                <a class="text-brand-BlueMedium font-semibold underline" href="mailto:thebigevent@fsu.edu">(thebigevent@fsu.edu)</a>.
+                <a class="text-brand-BlueMedium font-semibold underline" href="/cdn-cgi/l/email-protection#72061a17101b151704171c06321401075c171607">(<span class="__cf_email__" data-cfemail="087c606d6a616f6d7e6d667c486e7b7d266d6c7d">[email&#160;protected]</span>)</a>.
               </p>
             </div>
           </section>
@@ -259,6 +261,11 @@
       .replaceAll("'", "&#039;");
   }
 
+  // Like escapeHtml but preserves newlines so longer bios/descriptions render nicely.
+  function safeHtml(str) {
+    return escapeHtml(str).replace(/\n/g, "<br>");
+  }
+
   function pickFirst(obj, keys) {
     for (const k of keys) {
       const v = obj?.[k];
@@ -269,13 +276,15 @@
 
   function splitTasks(tasksStr, max = 6) {
     if (!tasksStr) return [];
-    return String(tasksStr).split(",").map(t => t.trim()).filter(Boolean).slice(0, max);
+    // Handle both comma-separated and tab-separated task lists
+    const sep = tasksStr.includes("\t") ? /\t/ : /,/;
+    return String(tasksStr).split(sep).map(t => t.trim()).filter(Boolean).slice(0, max);
   }
 
   function setLine(el, label, value) {
     if (!el) return;
     if (!value) { el.textContent = ""; return; }
-    el.innerHTML = `<span class="font-semibold">${escapeHtml(label)}</span> ${escapeHtml(value)}`;
+    el.innerHTML = `<span class="font-semibold">${escapeHtml(label)}</span> ${safeHtml(value)}`;
   }
 
   function showFriendlyError() {
@@ -375,9 +384,8 @@
       document.getElementById("orgName").textContent = siteObj.name || "";
 
       setLine(document.getElementById("orgAddress"), "Address:", siteObj.address || "");
-      setLine(document.getElementById("orgVolunteers"), "Volunteers:", siteObj.volunteers || "");
 
-      // Tasks badges
+      // Tasks badges + text list
       const badgesEl = document.getElementById("taskBadges");
       const tasksArr = splitTasks(siteObj.tasks, 6);
       badgesEl.innerHTML = tasksArr.map(t => `
@@ -386,8 +394,22 @@
         </span>
       `).join("");
 
-      setLine(document.getElementById("orgAbout"), "About:", siteObj.publicDescription || "");
-      setLine(document.getElementById("orgNotes"), "Notes:", siteObj.notes || "");
+      // Populate orgTasks element with a readable comma-separated list
+     
+
+      const orgBio = siteObj.bio || "";
+      const orgAboutEl = document.getElementById("orgAbout");
+      if (orgBio) {
+        orgAboutEl.innerHTML = `<span class="font-semibold">Bio:</span> ${safeHtml(orgBio)}`;
+      } else {
+        orgAboutEl.textContent = "";
+      }
+
+      // Only show Work Description if it's distinct from the bio
+      const workDesc = siteObj.publicDescription || "";
+      const showWorkDesc = workDesc && workDesc !== orgBio;
+      setLine(document.getElementById("orgWorkDesc"), "Work Description:", showWorkDesc ? workDesc : "");
+      setLine(document.getElementById("orgNotes"), "Special Notes:", siteObj.notes || "");
 
       // Contact fields (handles different JSON keys)
       const contactName = pickFirst(siteObj, ["contactName", "contact", "contact_person", "primaryContact", "coordinator", "person", "nameOfPerson"]);
@@ -466,16 +488,15 @@
       menu.classList.toggle("hidden");
     });
 
-    // Close mobile menu when a link is clicked
     menu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => menu.classList.add("hidden"));
     });
 
-    // Escape to close
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") menu.classList.add("hidden");
     });
   })();
-</script>
+  </script>
+
 </body>
 </html>

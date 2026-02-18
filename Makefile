@@ -4,7 +4,7 @@ all: sync
 
 # Pull live data from Google Sheets (requires internet access)
 sync:
-	python3 scripts/sync_sheets.py
+	python3 sync_sheets.py
 	@echo "✅ assignments.json and sites.json updated from Google Sheets."
 
 # Legacy: rebuild from local Excel/CSV files if you have them

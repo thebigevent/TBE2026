@@ -3,84 +3,68 @@ import json
 import re
 
 # ===== CONFIG =====
-XLSX_PATH   = "TBE Sites.xlsx"          # <- rename to your org workbook filename
-SHEET_NAME  = 0                         # <- or "Sites" if you have a named sheet
-OUT_PATH    = "sites.json"
+XLSX_PATH  = "TBE26_Service_Site_Bios.xlsx"
+SHEET_NAME = 0        # first sheet ("Sheet1")
+OUT_PATH   = "sites.json"
 
-# Map your spreadsheet columns -> output fields
-COLS = {
-    "name": "Service Site Name",        # required
-    "address": "Address",
-    "tasks": "Tasks",
-    "volunteers": "Volunteer Count",
-    "notes": "Notes",
-    "contactName": "Contact Name",
-    "email": "Email",
-    "phone": "Phone",
-    "publicDescription": "Public Description",
-}
+# Actual columns in the xlsx:
+#   Site Name | Contact Name | Phone Number | Email | Site Address |
+#   Tasks That Will Be Performed | Task Performed Text Entry |
+#   Special Notes | Bio
 
 # ===== HELPERS =====
 def slugify(s: str) -> str:
     s = (s or "").strip().lower()
     s = re.sub(r"[^a-z0-9]+", "-", s)
-    s = re.sub(r"-{2,}", "-", s).strip("-")
-    return s
+    return re.sub(r"-{2,}", "-", s).strip("-")
 
-def clean_phone(v):
-    if pd.isna(v):
+def clean(v) -> str:
+    """Coerce a cell value to a clean string, handling NaN and trailing .0."""
+    if v is None or (isinstance(v, float) and str(v) == "nan"):
         return ""
     s = str(v).strip()
-    # remove trailing .0 from Excel numeric phones
-    s = re.sub(r"\.0$", "", s)
+    s = re.sub(r"\.0$", "", s)  # strip Excel trailing .0 on numeric fields
     return s
 
 # ===== LOAD =====
-df = pd.read_excel(XLSX_PATH, sheet_name=SHEET_NAME)
-
-# Ensure required column exists
-if COLS["name"] not in df.columns:
-    raise ValueError(f"Missing required column: '{COLS['name']}'")
+df = pd.read_excel(XLSX_PATH, sheet_name=SHEET_NAME, dtype=str)
+print("Columns:", df.columns.tolist())
 
 sites = []
-for i, r in df.iterrows():
-    name = str(r.get(COLS["name"], "")).strip()
-    if not name or name.lower() == "nan":
+for _, r in df.iterrows():
+    name = clean(r.get("Site Name", ""))
+    if not name:
         continue
 
-    address = str(r.get(COLS["address"], "")).strip()
-    tasks = str(r.get(COLS["tasks"], "")).strip()
-    notes = str(r.get(COLS["notes"], "")).strip()
-    contact = str(r.get(COLS["contactName"], "")).strip()
-    email = str(r.get(COLS["email"], "")).strip()
-    phone = clean_phone(r.get(COLS["phone"], ""))
+    # Task badge labels — comma-separated, shown as blue chips
+    tasks = clean(r.get("Tasks That Will Be Performed", ""))
 
-    # volunteers: try to coerce to int, else default 0
-    vol_raw = r.get(COLS["volunteers"], 0)
-    try:
-        volunteers = int(vol_raw) if not pd.isna(vol_raw) else 0
-    except Exception:
-        volunteers = 0
+    # Org background bio — shown labeled on the org page
+    bio = clean(r.get("Bio", ""))
 
-    public_desc = str(r.get(COLS["publicDescription"], "")).strip()
+    # Work description — stored but not shown on org page
+    work_desc = clean(r.get("Task Performed Text Entry", ""))
+
+    # Special notes
+    notes = clean(r.get("Special Notes", ""))
 
     site_id = f"{len(sites)+1:03d}-{slugify(name)}"
 
     sites.append({
-        "name": name,
-        "address": address,
-        "tasks": tasks,
-        "volunteers": volunteers,
-        "notes": notes,
-        "contactName": contact,
-        "email": email,
-        "phone": phone,
-        "siteId": site_id,
-        "publicDescription": public_desc,
+        "siteId":            site_id,
+        "name":              name,
+        "address":           clean(r.get("Site Address", "")),
+        "tasks":             tasks,
+        "volunteers":        0,
+        "notes":             notes,
+        "contactName":       clean(r.get("Contact Name", "")),
+        "email":             clean(r.get("Email", "")),
+        "phone":             clean(r.get("Phone Number", "")),
+        "bio":               bio,
+        "publicDescription": work_desc,
     })
 
 with open(OUT_PATH, "w", encoding="utf-8") as f:
     json.dump(sites, f, ensure_ascii=False, indent=2)
 
 print(f"Wrote {OUT_PATH} with {len(sites)} sites.")
-

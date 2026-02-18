@@ -160,15 +160,10 @@
 
     <h2 id="modalTitle" class="text-3xl font-bold text-brand-BlueMedium"></h2>
 
-    <p id="modalAddress" class="mt-2 text-gray-600"></p>
-
     <div id="modalBadges" class="mt-4 flex flex-wrap gap-2"></div>
 
     <div class="mt-6 space-y-3 text-gray-700">
-      <p id="modalVolunteers"></p>
-      <p id="modalTasks"></p>
       <p id="modalAbout" class="text-gray-600"></p>
-      <p id="modalNotes" class="text-sm text-gray-600"></p>
     </div>
   </div>
 </div>
@@ -183,12 +178,8 @@
   const modalClose = document.getElementById("orgModalClose");
 
   const modalTitle = document.getElementById("modalTitle");
-  const modalAddress = document.getElementById("modalAddress");
   const modalBadges = document.getElementById("modalBadges");
-  const modalVolunteers = document.getElementById("modalVolunteers");
-  const modalTasks = document.getElementById("modalTasks");
   const modalAbout = document.getElementById("modalAbout");
-  const modalNotes = document.getElementById("modalNotes");
 
   let allSites = [];
   let currentList = [];
@@ -206,10 +197,19 @@
       .replaceAll("'", "&#039;");
   }
 
+  // Like escapeHtml but converts newlines to <br> so bio text renders correctly
+  function safeHtml(str) {
+    return escapeHtml(str)
+      .replace(/\n\n/g, "<br><br>")
+      .replace(/\n/g, "<br>");
+  }
+
   function splitTasks(tasksStr) {
     if (!tasksStr) return [];
+    // Handle both comma-separated and tab-separated task lists
+    const sep = tasksStr.includes("\t") ? /\t/ : /,/;
     return String(tasksStr)
-      .split(",")
+      .split(sep)
       .map(t => t.trim())
       .filter(Boolean)
       .slice(0, 6);
@@ -224,30 +224,17 @@
   }
 
   function openModal(site) {
-    // Fill modal content
     modalTitle.textContent = site.name || "";
-    modalAddress.innerHTML = site.address
-      ? `<span class="font-semibold">Address:</span> ${escapeHtml(site.address)}`
-      : "";
 
     const tasksArr = splitTasks(site.tasks);
     modalBadges.innerHTML = tasksArr.length ? makeBadges(tasksArr) : "";
 
-
-
-    modalAbout.innerHTML = site.publicDescription
-      ? `<span class="font-semibold text-gray-700">About:</span> ${escapeHtml(site.publicDescription)}`
+    modalAbout.innerHTML = site.bio
+      ? `<span class="font-semibold text-gray-700">Bio:</span> ${safeHtml(site.bio)}`
       : "";
 
-    modalNotes.innerHTML = site.notes
-      ? `<span class="font-semibold">Notes:</span> ${escapeHtml(site.notes)}`
-      : "";
-
-    // Show modal
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
-
-    // Optional: prevent background scroll while modal open (background visuals remain)
     document.body.style.overflow = "hidden";
   }
 
@@ -259,13 +246,11 @@
 
   function card(site, idx) {
     const name = escapeHtml(site.name);
-    const address = escapeHtml(site.address || "");
-    const description = escapeHtml(site.publicDescription || "");
+    const bio = safeHtml(site.bio || "");
     const tasks = splitTasks(site.tasks);
 
     const badges = tasks.length ? `<div class="mt-4 flex flex-wrap gap-2">${makeBadges(tasks)}</div>` : "";
 
-    // data-idx ties the element to the current rendered list without rerendering on open/close
     return `
       <article
         class="org-card cursor-pointer bg-white/85 backdrop-blur rounded-3xl p-6 shadow-lg border border-brand-BlueLight/60 hover:-translate-y-1 transition focus:outline-none focus:ring-4 focus:ring-brand-BlueLight/50"
@@ -276,18 +261,12 @@
       >
         <h3 class="text-xl font-bold text-brand-BlueMedium">${name}</h3>
 
-        ${address ? `<p class="mt-2 text-sm text-gray-600"><span class="font-semibold">Address:</span> ${address}</p>` : ""}
-
         ${badges}
 
-        <div class="mt-4 text-sm text-gray-700 space-y-1">
-          ${description ? `<p class="text-gray-600"><span class="font-semibold text-gray-700">About:</span> ${description}</p>` : ""}
-        </div>
+        ${bio ? `<p class="mt-4 text-sm text-gray-600"><span class="font-semibold text-gray-700">Bio:</span> ${bio}</p>` : ""}
       </article>
     `;
-  }
-
-  function render(list) {
+  }  function render(list) {
     currentList = list;
     grid.innerHTML = list.map((s, i) => card(s, i)).join("");
     meta.textContent = `${list.length} site${list.length === 1 ? "" : "s"} shown`;

@@ -2,42 +2,54 @@ import pandas as pd
 import json
 import re
 
-XLSX_PATH = "TBE26 SITE ASSIGNMENTS.xlsx"
-OUT_PATH  = "assignments.json"
+# ===== CONFIG =====
+XLSX_PATH  = "TBE26_SITE_ASSIGNMENTS.xlsx"
+SHEET_NAME = "Site Assignments"   # exact sheet name
+OUT_PATH   = "assignments.json"
 
+# Actual columns in the xlsx:
+#   Group Number | First name | Last name | School |
+#   How are you participating in The Big Event? | Organization/RSO |
+#   Delegate | Site | Address
+
+# ===== HELPERS =====
 def norm(s: str) -> str:
     s = (s or "").strip().lower()
-    s = re.sub(r"[^a-z0-9]+", "", s)   # keep alnum only
-    return s
+    return re.sub(r"[^a-z0-9]+", "", s)
 
-df = pd.read_excel(XLSX_PATH, sheet_name="Sheet1")
+def clean(v) -> str:
+    if v is None or (isinstance(v, float) and str(v) == "nan"):
+        return ""
+    return str(v).strip()
 
-# pick the main assignment columns
-df = df.rename(columns={
-    "First name": "first",
-    "Last name": "last",
-    "Site": "site",
-    "Organization/RSO": "group"
-})
-print(df.columns.tolist())
-
-df = df[["first", "last", "site", "group"]].dropna(subset=["first", "last", "site"])
+# ===== LOAD =====
+df = pd.read_excel(XLSX_PATH, sheet_name=SHEET_NAME, dtype=str)
+print("Columns:", df.columns.tolist())
 
 assignments = {}
 dupes = []
 
 for _, r in df.iterrows():
-    first = str(r["first"]).strip()
-    last  = str(r["last"]).strip()
-    site  = str(r["site"]).strip()
-    group = "" if pd.isna(r["group"]) else str(r["group"]).strip()
+    first = clean(r.get("First name", ""))
+    last  = clean(r.get("Last name",  ""))
+    site  = clean(r.get("Site",       ""))
+    group = clean(r.get("Organization/RSO", ""))
+    # "Delegate" column marks the crew/team leader for the group
+    crew  = clean(r.get("Delegate",   ""))
 
-    key = norm(first + last)
+    if not first or not last or not site:
+        continue
 
-    item = {"first": first, "last": last, "site": site, "group": group}
+    key  = norm(first + last)
+    item = {
+        "first":      first,
+        "last":       last,
+        "site":       site,
+        "group":      group,
+        "crewLeader": crew,
+    }
 
     if key in assignments:
-        # handle duplicates by storing a list
         if isinstance(assignments[key], dict):
             assignments[key] = [assignments[key], item]
         else:
@@ -51,4 +63,4 @@ with open(OUT_PATH, "w", encoding="utf-8") as f:
 
 print(f"Wrote {OUT_PATH} with {len(assignments)} unique volunteer keys.")
 if dupes:
-    print(f"Warning: {len(set(dupes))} duplicate name keys (stored as arrays).")
+    print(f"Warning: {len(set(dupes))} duplicate name key(s) stored as arrays.")
