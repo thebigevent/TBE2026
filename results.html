@@ -79,7 +79,7 @@
   </div>
 </nav>
 
-<main class="flex-grow container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+<main class="flex-grow container mx-auto px-2 sm:px-6 py-6 sm:py-12">
 
   <!-- Header -->
   <section class="text-center mb-10">
@@ -94,11 +94,11 @@
   </section>
 
   <!-- Main Card -->
-<div class="relative bg-white/85 backdrop-blur p-6 sm:p-10 rounded-3xl shadow-2xl">
+<div class="relative bg-white/85 backdrop-blur p-3 sm:p-10 rounded-3xl shadow-2xl">
     <div class="absolute -top-12 -left-12 w-64 h-64 bg-brand-BlueLight/50 blur-2xl rounded-full"></div>
     <div class="absolute top-24 -right-16 w-72 h-72 bg-brand-Green/20 blur-2xl rounded-full"></div>
 
-    <div class="relative soft-card rounded-3xl p-5 sm:p-8 md:p-10">
+    <div class="relative soft-card rounded-3xl p-4 sm:p-8 md:p-10">
 
       <!-- Top row: Volunteer + Back -->
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -129,10 +129,10 @@
 
       <!-- Details -->
       <div id="details" class="mt-10 hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
 
           <!-- Organization Card -->
-          <section class="rounded-3xl border border-brand-BlueLight/60 bg-white/70 p-7">
+          <section class="rounded-3xl border border-brand-BlueLight/60 bg-white/70 p-4 sm:p-7">
             <div class="flex items-start justify-between gap-4">
               <div>
                 <p class="text-sm text-gray-500">Organization</p>
@@ -158,15 +158,15 @@
             </div>
 
             <!-- Map / Copy Address -->
-            <div class="mt-6 flex flex-wrap gap-3">
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
               <a id="btnMap"
-                 class="inline-flex items-center px-4 py-3 rounded-2xl bg-brand-BlueMedium text-white font-semibold shadow hover:opacity-95 transition hidden"
+                 class="inline-flex w-full sm:w-auto items-center justify-center px-4 py-3 rounded-2xl bg-brand-BlueMedium text-white font-semibold shadow hover:opacity-95 transition hidden"
                  target="_blank" rel="noopener">
                 Open in Maps
               </a>
 
               <button id="btnCopyAddress"
-                      class="inline-flex items-center px-4 py-3 rounded-2xl border border-brand-BlueLight/80 bg-white/80 text-brand-BlueMedium font-semibold hover:bg-white transition hidden"
+                      class="inline-flex w-full sm:w-auto items-center justify-center px-4 py-3 rounded-2xl border border-brand-BlueLight/80 bg-white/80 text-brand-BlueMedium font-semibold hover:bg-white transition hidden"
                       type="button">
                 Copy Address
               </button>
@@ -175,7 +175,7 @@
           </section>
 
           <!-- Contact Card -->
-          <section class="rounded-3xl border border-brand-BlueLight/60 bg-white/70 p-7">
+          <section class="rounded-3xl border border-brand-BlueLight/60 bg-white/70 p-4 sm:p-7">
             <p class="text-sm text-gray-500">Site Contact</p>
             <h2 class="mt-1 text-2xl font-bold text-brand-BlueMedium">Contact Info</h2>
 
@@ -186,7 +186,7 @@
                 <p id="contactPhone" class="flex-1"></p>
 
                 <a id="btnCall"
-                   class="inline-flex items-center justify-center px-4 py-3 rounded-2xl bg-brand-Green/90 text-white font-semibold hover:opacity-95 transition shadow hidden"
+                   class="inline-flex w-full sm:w-auto items-center justify-center px-4 py-3 rounded-2xl bg-brand-Green/90 text-white font-semibold hover:opacity-95 transition shadow hidden"
                    href="#">
                   Call
                 </a>
@@ -198,7 +198,7 @@
                 <p id="contactEmail" class="flex-1 min-w-0 break-words"></p>
 
                 <a id="btnEmail"
-                   class="inline-flex items-center justify-center px-4 py-3 rounded-2xl bg-brand-BlueMedium text-white font-semibold hover:opacity-95 transition shadow hidden"
+                   class="inline-flex w-full sm:w-auto items-center justify-center px-4 py-3 rounded-2xl bg-brand-BlueMedium text-white font-semibold hover:opacity-95 transition shadow hidden"
                    href="#">
                   Email
                 </a>
@@ -226,7 +226,7 @@
           <p class="text-xl font-bold text-red-700">Something went wrong.</p>
           <p class="mt-2 text-red-700">
             Please contact The Big Event at
-            <a class="font-semibold underline" href="mailto:thebigevent@fsu.edu">thebigevent@fsu.edu</a>.
+            <a class="font-semibold underline" href="/cdn-cgi/l/email-protection#6c1804090e050b091a0902182c0a1f1942090819"><span class="__cf_email__" data-cfemail="23574b46414a444655464d57634550560d464756">[email&#160;protected]</span></a>.
           </p>
         </div>
       </div>
@@ -240,7 +240,7 @@
   <p>&copy; 2026 Big Event</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const BIG_EVENT_CONTACT_EMAIL = "thebigevent@fsu.edu";
   const BIG_EVENT_CONTACT_NAME = "Camila Roman";
 
@@ -488,15 +488,4 @@
       menu.classList.toggle("hidden");
     });
 
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => menu.classList.add("hidden"));
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") menu.classList.add("hidden");
-    });
-  })();
-  </script>
-
-</body>
-</html>
+    menu.querySelectorAll("a").forEach((link)
